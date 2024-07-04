@@ -6,6 +6,7 @@ let x = 0;
 //   x++;
 // }
 
+// do while does the loop at least once.
 do {
   console.log("hello");
   x++;
@@ -20,25 +21,25 @@ while (i <= 12) {
     continue;
   }
 
-  console.log("baby");
+  console.log("one more time");
 }
 
-const numo = [0, 1, 2, 3, 4, 5];
+const num = [0, 1, 2, 3, 4, 5];
 
-switch (numo[2]) {
+switch (num[2]) {
   case 0:
-    console.log("wow 0");
+    console.log("0");
     break;
 
   case 1:
-    console.log("wow baby 1");
+    console.log("1");
     break;
 
   default:
-    console.log("not numo :(");
+    console.log("not a num");
 }
 
-// Challenge start:
+console.log("---------------------- Challenge Start ----------------------");
 const timeToMixJuice = function (name) {
   switch (name) {
     case "Pure Strawberry Joy":
@@ -78,19 +79,19 @@ function limesToCut(wedgesNeeded, limes) {
   );
 
   let sumWedges = 0;
-  let numOfWedgesNeeded = 0;
+  let limesNeeded = 0;
 
-  for (const limeWedge of limeToWedges.entries()) {
-    sumWedges += limeWedge[1];
-    numOfWedgesNeeded = limeWedge[0];
-
-    if (sumWedges >= wedgesNeeded) break;
+  for (const limeWedge of limeToWedges) {
+    sumWedges += limeWedge;
+    if (sumWedges >= wedgesNeeded) {
+      limesNeeded++;
+      break;
+    }
+    limesNeeded++;
   }
 
-  return ++numOfWedgesNeeded;
+  return limesNeeded;
 }
-
-console.log(limesToCut(25, ["small", "small", "large", "medium", "small"]));
 
 console.log(
   limesToCut(42, [
@@ -153,3 +154,11 @@ const orders = [
 ];
 
 console.log(remainingOrders(7, orders));
+
+// Works when there's only little time left:
+console.log(remainingOrders(4, ["All or Nothing", "Green Garden"]));
+
+// Counts all orders as fulfilled when there's enough time:
+console.log(
+  remainingOrders(20, ["All or Nothing", "Green Garden", "Mystery Juice"])
+);
